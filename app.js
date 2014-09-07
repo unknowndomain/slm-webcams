@@ -27,13 +27,13 @@ module.exports = {
 			var user = res.locals.user;
 			if ( user ) {
 				if ( ! user.is_active() ) {
-					res.locals.flash( 'warning', 'Insufficient Membership.', 'Unfortunately your account does not have rights to this page at the moment.' );
+					res.locals.flash( 'danger', 'Access Denied.', 'You do not have permission to access this area.' );
 					res.redirect( '/membership' );
 				} else {
 					res.render( 'webcams', { cameras: config.webcams } );
 				}
 			} else {
-				res.locals.flash( 'danger', 'Not logged in.', 'You cannot access the webcams when not logged in.' );
+				res.locals.flash( 'danger', 'Not logged in.', 'You are not logged in.' );
 				res.redirect( '/' );
 			}
 		} );
